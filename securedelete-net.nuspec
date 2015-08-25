@@ -1,0 +1,32 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
+    <metadata>
+        <id>securedelete-net</id>
+        <version>0.1.0</version>
+        <authors>Christian Hermann</authors>
+        <owners>Christian Hermann</owners>
+        <licenseUrl>https://raw.githubusercontent.com/bitbeans/securedelete-net/master/LICENSE.md</licenseUrl>
+        <projectUrl>https://github.com/bitbeans/securedelete-net</projectUrl>
+        <requireLicenseAcceptance>false</requireLicenseAcceptance>
+        <description>Class to securely delete files on a HDD (only windows based systems).
+
+Current Features:
+
+- Ability to detect the underlying hardware (to prevent overwrites on SSD's)
+- Overwrite files with simple random data
+- Resets the file times
+- Obfuscate file and directory names</description>
+        <copyright>Copyright 2015 Christian Hermann</copyright>
+        <language>en-US</language>
+        <tags>secure delete ssd hdd overwrite erase</tags>
+        <dependencies>
+            <group targetFramework=".NETFramework0.0">
+                <dependency id="helper-net" version="0.1.0" />
+                <dependency id="diskdetector-net" version="0.3.0" />
+            </group>
+        </dependencies>
+    </metadata>
+    <files>
+        <file src="securedelete-net\bin\Release\SecureDelete.dll" target="lib\net\SecureDelete.dll" />
+    </files>
+</package>
