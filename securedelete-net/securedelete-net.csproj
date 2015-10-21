@@ -31,12 +31,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="DiskDetector, Version=0.3.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\diskdetector-net.0.3.0\lib\net\DiskDetector.dll</HintPath>
+    <Reference Include="DiskDetector, Version=0.3.1.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\diskdetector-net.0.3.1\lib\net\DiskDetector.dll</HintPath>
       <Private>True</Private>
     </Reference>
-    <Reference Include="Helper, Version=0.1.0.0, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\packages\helper-net.0.1.0\lib\net45\Helper.dll</HintPath>
+    <Reference Include="Helper, Version=0.1.2.0, Culture=neutral, processorArchitecture=MSIL">
+      <HintPath>..\packages\helper-net.0.1.2\lib\net45\Helper.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />

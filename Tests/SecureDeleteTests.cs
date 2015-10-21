@@ -33,5 +33,12 @@ namespace Tests
         {
             Delete.DeleteFileWithoutDriveDetection(@"F:\aFile.jpg");
         }
+
+        [Test]
+        public void DeleteFileOnNetworkDrive()
+        {
+            //Test note: mapped with ExpanDrive and hubiC (EXFS filesystem)
+            Delete.DeleteFile(@"Z:\image-201504171044060011.jpg");
+        }
     }
 }

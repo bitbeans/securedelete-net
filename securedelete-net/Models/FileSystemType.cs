@@ -17,6 +17,10 @@
         /// <summary>
         ///     Used for unknown.
         /// </summary>
-        Default
+        Default,
+        /// <summary>
+        ///     Used with ExpanDrive.
+        /// </summary>
+        EXFS
     }
 }

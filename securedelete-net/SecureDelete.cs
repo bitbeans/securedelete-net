@@ -286,11 +286,20 @@ namespace SecureDelete
                     }
                     // check if the file is a hard link or a symbolic link.
                     //if ((fileInfo.Attributes & FileAttributes.ReparsePoint) == 0) { }
+                    FileSystemType fileSystemType;
+                    try
+                    {
+                        fileSystemType = ParseEnum<FileSystemType>(driveInfo.DriveFormat);
+                    }
+                    catch (Exception)
+                    {
+                        fileSystemType = FileSystemType.Default;
+                    }
                     switch (driveInfo.HardwareType)
                     {
                         case HardwareType.Hdd:
                             OverwriteFileWithRandomData(fileInfo);
-                            ObfuscateFile(fileInfo, ParseEnum<FileSystemType>(driveInfo.DriveFormat));
+                            ObfuscateFile(fileInfo, fileSystemType);
                             fileInfo.Delete();
                             break;
                         case HardwareType.Ssd:
@@ -298,16 +307,23 @@ namespace SecureDelete
                             fileInfo.Delete();
                             break;
                         default:
-                            OverwriteFileWithRandomData(fileInfo);
-                            ObfuscateFile(fileInfo, ParseEnum<FileSystemType>(driveInfo.DriveFormat));
-                            fileInfo.Delete();
+                            if (driveInfo.DriveType == DriveType.Network)
+                            {
+                                fileInfo.Delete();
+                            }
+                            else
+                            {
+                                OverwriteFileWithRandomData(fileInfo);
+                                ObfuscateFile(fileInfo, fileSystemType);
+                                fileInfo.Delete();
+                            }
                             break;
                     }
                 }
                 else
                 {
                     throw new DetectionFailedException(
-                        "Could not detect drive informations. Maybe it`s not a fixed or removable drive?");
+                        "Could not detect drive informations. Maybe it`s not a fixed, removable or network drive?");
                 }
             }
         }

@@ -2,7 +2,7 @@
 <package xmlns="http://schemas.microsoft.com/packaging/2012/06/nuspec.xsd">
     <metadata>
         <id>securedelete-net</id>
-        <version>0.1.0</version>
+        <version>0.1.1</version>
         <authors>Christian Hermann</authors>
         <owners>Christian Hermann</owners>
         <licenseUrl>https://raw.githubusercontent.com/bitbeans/securedelete-net/master/LICENSE.md</licenseUrl>
@@ -21,8 +21,8 @@ Current Features:
         <tags>secure delete ssd hdd overwrite erase</tags>
         <dependencies>
             <group targetFramework=".NETFramework0.0">
-                <dependency id="helper-net" version="0.1.0" />
-                <dependency id="diskdetector-net" version="0.3.0" />
+                <dependency id="helper-net" version="0.1.2" />
+                <dependency id="diskdetector-net" version="0.3.1" />
             </group>
         </dependencies>
     </metadata>
