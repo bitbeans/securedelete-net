@@ -426,7 +426,7 @@ namespace SecureDelete
         /// <summary>
         ///     Obfuscates a directory.
         /// </summary>
-        /// <param name="fileSystemInfo">The directory to obfuscate.</param>
+        /// <param name="directoryInfo">The directory to obfuscate.</param>
         /// <param name="fileSystemType">The file system type.</param>
         /// <exception cref="FileNotFoundException"></exception>
         /// <exception cref="DirectoryNotFoundException"></exception>
@@ -439,10 +439,10 @@ namespace SecureDelete
         /// <exception cref="NotSupportedException"></exception>
         /// <exception cref="PlatformNotSupportedException"></exception>
         /// <exception cref="PathTooLongException"></exception>
-        internal static void ObfuscateDirectory(FileSystemInfo fileSystemInfo,
+        internal static void ObfuscateDirectory(DirectoryInfo directoryInfo,
             FileSystemType fileSystemType = FileSystemType.Default)
         {
-            if (!fileSystemInfo.Exists)
+            if (!directoryInfo.Exists)
             {
                 return;
             }
@@ -450,18 +450,18 @@ namespace SecureDelete
             try
             {
                 // prevent a file lock by indexing service
-                fileSystemInfo.Attributes = FileAttributes.NotContentIndexed;
+                directoryInfo.Attributes = FileAttributes.NotContentIndexed;
             }
             catch (ArgumentException e)
             {
                 throw new UnauthorizedAccessException(e.Message, e);
             }
             // generate a new random directory name and set a new path
-            var newPath = Path.Combine(Path.GetDirectoryName(fileSystemInfo.FullName), Path.GetRandomFileName());
+            var newPath = Path.Combine(directoryInfo.Parent.FullName, Path.GetRandomFileName());
             // reset the file times
-            ObfuscateFileTimes(fileSystemInfo, fileSystemType);
+            ObfuscateFileTimes(directoryInfo, fileSystemType);
             //rename the directory once to erase the entry from the file system table.
-            fileSystemInfo.MoveTo(newPath);
+            directoryInfo.MoveTo(newPath);
         }
 
         /// <summary>
