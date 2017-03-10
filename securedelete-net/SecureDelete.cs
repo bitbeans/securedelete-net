@@ -66,6 +66,13 @@ namespace SecureDelete
                     DeleteFile(file);
                 }
             }
+            
+            if (string.Equals(Path.GetPathRoot(directoryInfo.FullName), directoryInfo.FullName, StringComparison.OrdinalIgnoreCase))
+            {
+                // can't delete a root
+                return;
+            }
+            
             ObfuscateDirectory(directoryInfo);
             directoryInfo.Delete();
         }
@@ -111,6 +118,13 @@ namespace SecureDelete
                     DeleteFileWithoutDriveDetection(file);
                 }
             }
+            
+            if (string.Equals(Path.GetPathRoot(directoryInfo.FullName), directoryInfo.FullName, StringComparison.OrdinalIgnoreCase))
+            {
+                // can't delete a root
+                return;
+            }
+            
             ObfuscateDirectory(directoryInfo);
             directoryInfo.Delete();
         }
